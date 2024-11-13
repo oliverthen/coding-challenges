@@ -20,22 +20,12 @@ def cli(filename, c, l, w, m):
             for line in file:
                 num_lines += 1
         click.echo(f"{num_lines} {filename}")
-    # elif w:
-    #     with open(filename) as file:
-    #         num_words = 0
-    #         for line in file:
-    #             in_word = False
-    #             for char in line:
-    #                 if char.isalpha():
-    #                     in_word = True
-    #                     continue
-    #                 else:
-    #                     if in_word:
-    #                         num_words += 1
-    #                     in_word = False
-
-                # split_words = line.split(' ')
-                # num_words += len(split_words)
+    elif w:
+        with open(filename) as file:
+            num_words = 0
+            for line in file:
+                split_words = line.split()
+                num_words += len(split_words)
         click.echo(f"{num_words} {filename}")
     elif m:
         with open(filename) as file:
