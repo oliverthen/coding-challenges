@@ -31,16 +31,5 @@ def cli(files, n, b):
         else:
             click.echo(formatted_line)
 
-
-    # for count, line in enumerate(file_lines, 1):
-    #     # Remove new line character
-    #     formatted_line = line.split("\n")[0]
-
-    #     if not n:
-    #         click.echo(formatted_line)
-    #         continue 
-
-    #     click.echo(f"{count} {formatted_line}")
-
 if __name__ == "__main__":
     cli()
