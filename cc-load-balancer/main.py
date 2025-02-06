@@ -1,12 +1,19 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+from http.server import SimpleHTTPRequestHandler
+import socketserver
 
-hostname = 'localhost'
-serverPort = 8080
+# Define the request handler
+class MyRequestHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        # Respond to GET requrests
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(b"Hello world!")
 
-class MyServer(BaseHTTPRequestHandler):
+# Define the serve and port
+PORT = 8080
 
-
-if __name__ == '__main__':
-    
+with socketserver.TCPServer(("", PORT), MyRequestHandler) as httpd:
+    print(f"Serving on port {PORT}")
+    httpd.serve_forever()    
 
